@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ggkbigdata.ioss.dbsource.mapper.DataSynchronismMapper">
+    <select id="getTicketMainInfoFromOral" resultType="TicketMainInfo">
+        select cChr_IncidentNumber as event_id, 
+                Contact_Company__c  as report_area,
+                cChr_WorkLogSubmitter as reportor,
+                cChr_WorkLogSubmitDate as commit_time,
+                cChr_Helpdesk_Description as event_title,
+                Helpdesk_DetailedDecription as event_descr,
+                SERVICE_TYPE_C as event_type,
+                Categorization_Tier_1__c as event_classify,
+                Categorization_Tier_2__c as owner_system,
+                Categorization_Tier_3__c as owner_module,
+                OPERATIONALCATEGORYTIER4_C as sub_module,
+                OPERATIONALCATEGORYTIER5_C as func_menu,
+                cDpl_ImpactScope__c as affect_range,
+                Impact__c as affect_degree,
+                Priority__c as pri,
+                Reported_Source__c as event_source,
+                cChr_DisplayStatus__c as event_status,
+                cChr_StatusReason__c as status_reason,
+                cChr_ResloveCode__c as solve_code,
+                cChr_CloseCode__c as close_code,
+                Assigned_Group__c as current_deal_group,
+                Assignee__c as current_dealor,
+                Resolution__c as solution,
+                cChr_WorkLogSubmitDate as update_time
+            FROM GddS_inc_HelpDesk_Join_WorkLog where cChr_WorkLogSubmitDate like #{date} and rownum &gt;= #{start} and &lt; #{end}
+    </select>
+    
+    <select id="getDateEventCount" resultType="java.lang.Long"> 
+        SELECT count(1) 
+            FROM GddS_inc_HelpDesk_Join_WorkLog 
+            where cChr_WorkLogSubmitDate like #{date}
+    </select>
+</mapper>
