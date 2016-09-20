@@ -6,3 +6,4 @@ mvnw.cmd
 .project
 .factorypath
 target/
+/.apt_generated/
