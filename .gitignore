@@ -1,8 +1,11 @@
+/.apt_generated/
+/target/
 .classpath
+.factorypath
+.gradle/
+.mvn/
+.project
 .settings/
-.mvn
 mvnw
 mvnw.cmd
-.project
-.factorypath
-target/
+

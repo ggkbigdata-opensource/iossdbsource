@@ -27,7 +27,7 @@
                 Assignee__c as current_dealor,
                 Resolution__c as solution,
                 cChr_WorkLogSubmitDate as update_time
-            FROM GddS_inc_HelpDesk_Join_WorkLog where cChr_WorkLogSubmitDate like #{date} and rownum &gt;= #{start} and &lt; #{end}
+            FROM GddS_inc_HelpDesk_Join_WorkLog where cChr_WorkLogSubmitDate like #{date}
     </select>
     
     <select id="getDateEventCount" resultType="java.lang.Long"> 
